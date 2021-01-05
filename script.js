@@ -1,5 +1,5 @@
 const myCalculator = document.querySelector(".myCal");
-const myKeys = [["1", "2", "3", "+"], ["4", "5", "6", "-"], ["7", "8", "9", "*"], ["C", "0", "=", "/"]];
+const myKeys = [["C", "+/-", "%", "/"], ["7", "8", "9", "*"], ["4", "5", "6", "-"], ["1", "2", "3", "+"],["0","",".","="]];
 const myOper = ["+", "-", "*", "/"];
 let myOutput;
 document.addEventListener("DOMContentLoaded", function () {
@@ -10,19 +10,28 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let y = 0; y < myKeys.length; y++) {
         let div = document.createElement("div")
         div.classList.add("row");
-        for (let x = 0; x < myKeys[y].length; x++) {
+        for (let x = 0; x < myKeys[y].length-1; x++) {
             //console.log(myKeys[y][x]);
             var btn = document.createElement("div");
             btn.innerHTML = myKeys[y][x];
             btn.classList.add("btn");
             btn.addEventListener("click", btnHit);
             div.appendChild(btn);
+            console.log(x);
+        }for (let x = 3; x < myKeys[y].length; x++) {
+            //console.log(myKeys[y][x]);
+            var OPbtn = document.createElement("div");
+            OPbtn.innerHTML = myKeys[y][x];
+            OPbtn.classList.add("OPbtn");
+            OPbtn.addEventListener("click", btnHit);
+            div.appendChild(OPbtn);
         }
         myCalculator.appendChild(div);
         console.log(div);
     }
 
-});
+})
+
 function btnHit(e) {
     console.log(this.innerText);
     let myValue = this.innerText;
